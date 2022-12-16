@@ -6,8 +6,7 @@ $(function () {
   var timeBlocks = Array.from($(".time-block"))
   timeBlocks.forEach(currentTimeBlockDiv => {
     setColor(timeCur, currentTimeBlockDiv)
-  // timeBlocks.forEach(parentTimeBlock.children[1].value) 
-  // handleSave. 
+  setSavedText(currentTimeBlockDiv)
   });
 });
 
@@ -20,6 +19,12 @@ function setColor(currentHour, currentBlock) {
   } else {
     currentBlock.classList.add("past")
   }
+}
+
+function setSavedText(timeBlock) {
+  var id = timeBlock.id
+  var text = localStorage.getItem(id)
+  timeBlock.children[1].value = text
 }
 
 function handleSave(event) {
